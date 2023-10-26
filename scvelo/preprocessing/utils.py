@@ -1,3 +1,6 @@
+# Floor
+import math
+
 import warnings
 
 import numpy as np
@@ -30,6 +33,34 @@ def _filter(X, min_counts=None, min_cells=None, max_counts=None, max_cells=None)
         else np.inf
     )
     return (lb <= counts) & (counts <= ub), counts
+
+
+# Metric
+def metric_filter_genes(
+    data
+):
+    """
+    Metric for quantifying gene loss using filter_genes.
+
+    Handler for seeing how many genes are lost given a filter
+    value.
+
+    Parameters
+    ----------
+    data : :class:`~anndata.AnnData`, `np.ndarray`, `sp.spmatrix`
+        The (annotated) data matrix of shape `n_obs` × `n_vars`. Rows correspond
+        to cells and columns to genes.
+
+    Returns
+    -------
+    A filtered AnnData object.
+    """
+
+    # How many cells do we have?
+    n_cells = data.shape[0]
+
+    # Now make the various cutoffs.
+    return range(50, n_cells, math.floor(n_cells/10))
 
 
 def filter_genes(

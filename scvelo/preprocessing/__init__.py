@@ -5,6 +5,7 @@ from .utils import (
     filter_genes,
     filter_genes_dispersion,
     log1p,
+    metric_filter_genes,
     normalize_per_cell,
     recipe_velocity,
 )
@@ -14,6 +15,7 @@ __all__ = [
     "filter_genes",
     "filter_genes_dispersion",
     "log1p",
+    "metric_filter_genes",
     "moments",
     "neighbors",
     "normalize_per_cell",

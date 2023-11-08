@@ -32,7 +32,7 @@ def _filter(X, min_counts=None, min_cells=None, max_counts=None, max_cells=None)
         if max_cells is not None
         else np.inf
     )
-    print(counts)
+    print(len(counts))
     return (lb <= counts) & (counts <= ub), counts
 
 

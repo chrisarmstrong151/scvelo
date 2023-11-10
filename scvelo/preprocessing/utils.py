@@ -570,8 +570,10 @@ def normalize_per_cell(
             counts += counts == 0  # to avoid division by zero
 
             if issparse(X):
+                print('sparse logic...')
                 sparsefuncs.inplace_row_scale(X, 1 / counts)
             else:
+                print('not sparse logic...')
                 X /= np.array(counts[:, None])
             modified_layers.append(layer)
             if (
